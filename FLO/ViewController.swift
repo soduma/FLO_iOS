@@ -7,6 +7,7 @@
 
 import UIKit
 import AVFoundation
+import Kingfisher
 
 class ViewController: UIViewController {
     
@@ -37,7 +38,11 @@ class ViewController: UIViewController {
         
         print(data)
         print(data.singer)
+        print(data.image)
         
+        let imageUrl = URL(string: data.image)!
+        
+        coverImageView.kf.setImage(with: imageUrl)
         songTitle.text = data.title
         singer.text = data.singer
         album.text = data.album

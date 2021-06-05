@@ -30,15 +30,15 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="singer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="N9E-HT-g7T">
-                                <rect key="frame" x="20" y="480" width="350" height="24"/>
+                                <rect key="frame" x="20" y="475" width="350" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="album" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="dBe-UB-WcU">
-                                <rect key="frame" x="20" y="509" width="350" height="21"/>
+                                <rect key="frame" x="20" y="504" width="350" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6L5-x8-RiK">
@@ -90,7 +90,7 @@
                             <constraint firstItem="dBe-UB-WcU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="VGK-FA-jjE"/>
                             <constraint firstItem="1vf-Rz-hKj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Vzr-ar-pap"/>
                             <constraint firstItem="6L5-x8-RiK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YZZ-22-kEb"/>
-                            <constraint firstItem="N9E-HT-g7T" firstAttribute="top" secondItem="1vf-Rz-hKj" secondAttribute="bottom" constant="30" id="ZNO-XE-2xG"/>
+                            <constraint firstItem="N9E-HT-g7T" firstAttribute="top" secondItem="1vf-Rz-hKj" secondAttribute="bottom" constant="25" id="ZNO-XE-2xG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="N9E-HT-g7T" secondAttribute="trailing" constant="20" id="b58-KD-Omk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dBe-UB-WcU" secondAttribute="trailing" constant="20" id="ir7-H5-gCh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="1vf-Rz-hKj" secondAttribute="trailing" constant="20" id="jQA-cH-xrw"/>
@@ -127,6 +127,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
