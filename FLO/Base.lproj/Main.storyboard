@@ -52,6 +52,9 @@
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="40"/>
                                 </state>
                                 <state key="selected" image="pause.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="touchPlayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UFz-2U-DJs"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lsb-88-MJL">
                                 <rect key="frame" x="20" y="690" width="37" height="16"/>
@@ -109,8 +112,12 @@
                     <connections>
                         <outlet property="album" destination="dBe-UB-WcU" id="IKn-qh-00M"/>
                         <outlet property="coverImageView" destination="fLx-7V-9qX" id="R0h-KW-xUC"/>
+                        <outlet property="playButton" destination="6L5-x8-RiK" id="IoT-Lp-JeT"/>
                         <outlet property="singer" destination="N9E-HT-g7T" id="U6y-dn-m1U"/>
                         <outlet property="songTitle" destination="1vf-Rz-hKj" id="CDa-GS-MKq"/>
+                        <outlet property="timeSlider" destination="RCE-0Y-YDJ" id="jR0-1D-pEW"/>
+                        <outlet property="totalLabel" destination="hMW-cT-PCb" id="vxt-ac-5iy"/>
+                        <outlet property="zeroLabel" destination="Lsb-88-MJL" id="WQU-xa-YgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

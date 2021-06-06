@@ -16,7 +16,13 @@ class ViewController: UIViewController {
     @IBOutlet weak var singer: UILabel!
     @IBOutlet weak var album: UILabel!
     
-//    var music: [Music] = []
+    @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var zeroLabel: UILabel!
+    @IBOutlet weak var totalLabel: UILabel!
+    @IBOutlet weak var timeSlider: UISlider!
+    
+    var player: AVPlayer?
+    var playerItem: AVPlayerItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,13 +46,31 @@ class ViewController: UIViewController {
         print(data.singer)
         print(data.image)
         
-        let imageUrl = URL(string: data.image)!
-        
-        coverImageView.kf.setImage(with: imageUrl)
         songTitle.text = data.title
         singer.text = data.singer
         album.text = data.album
+        
+        guard let imageURL = URL(string: data.image) else { return }
+        coverImageView.kf.setImage(with: imageURL)
+        
+        guard let fileURL = URL(string: data.file) else { return }
+        playerItem = AVPlayerItem(url: fileURL)
+        player = AVPlayer(playerItem: playerItem)
     }
+    
+    @IBAction func touchPlayButton(_ sender: UIButton) {
+        playButton.isSelected = !playButton.isSelected
+        
+        if playButton.isSelected == true {
+            print("play")
+            player?.play()
+        } else {
+            print("pause")
+            player?.pause()
+        }
+    }
+    
+    
 }
 
 
