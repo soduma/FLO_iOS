@@ -71,6 +71,9 @@
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RCE-0Y-YDJ">
                                 <rect key="frame" x="18" y="660" width="354" height="31"/>
                                 <color key="minimumTrackTintColor" systemColor="labelColor"/>
+                                <connections>
+                                    <action selector="seek:" destination="BYZ-38-t0r" eventType="valueChanged" id="8m3-Bn-yO5"/>
+                                </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKT-4o-DlV">
                                 <rect key="frame" x="172" y="610" width="46" height="30"/>
@@ -115,9 +118,9 @@
                         <outlet property="playButton" destination="6L5-x8-RiK" id="IoT-Lp-JeT"/>
                         <outlet property="singer" destination="N9E-HT-g7T" id="U6y-dn-m1U"/>
                         <outlet property="songTitle" destination="1vf-Rz-hKj" id="CDa-GS-MKq"/>
+                        <outlet property="timeLabel" destination="Lsb-88-MJL" id="9Zo-NI-WYA"/>
                         <outlet property="timeSlider" destination="RCE-0Y-YDJ" id="jR0-1D-pEW"/>
                         <outlet property="totalLabel" destination="hMW-cT-PCb" id="vxt-ac-5iy"/>
-                        <outlet property="zeroLabel" destination="Lsb-88-MJL" id="WQU-xa-YgU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
