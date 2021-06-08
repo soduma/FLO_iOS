@@ -21,22 +21,24 @@ class ViewController: UIViewController {
     @IBOutlet weak var totalLabel: UILabel!
     @IBOutlet weak var timeSlider: UISlider!
     
+    @IBOutlet weak var lyricsView: UIView!
+    @IBOutlet weak var lyricsLabel: UILabel!
+    @IBOutlet weak var lyricsCloseButton: UIButton!
+    
     var player: AVPlayer?
     var playerItem: AVPlayerItem?
-    var timeObserver: Any?
     
+    var lyricsList: [Int : String] = [:]
+
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        lyricsView.isHidden = true
         coverImageView.layer.cornerRadius = 40
         readyForPlay()
         
         timeSlider.value = 0
-//        updateTime(time: CMTime)
-        
-//        timeObserver = player?.addPeriodicTimeObserver(forInterval: CMTime(value: 1, timescale: 10), queue: .main, using: { time in
-//            print(self.timeSlider.value)
-//        })
         
     }
     
@@ -59,9 +61,16 @@ class ViewController: UIViewController {
         let time = CMTime(seconds: seconds, preferredTimescale: 100)
         player?.seek(to: time)
     }
-}
+    
+    @IBAction func touchLyrics(_ sender: UITapGestureRecognizer) {
+        lyricsView.isHidden = false
+//        print(lyricsList)
+    }
+    
+    @IBAction func touchLyricsClose(_ sender: UIButton) {
+        lyricsView.isHidden = true
+    }
 
-extension ViewController {
     func readyForPlay() {
         guard let url = URL(string: "https://grepp-programmers-challenges.s3.ap-northeast-2.amazonaws.com/2020-flo/song.json") else {
             print("missing url")
@@ -90,22 +99,62 @@ extension ViewController {
         let totalTime = Double(data.duration)
         totalLabel.text = secondsToString(seconds: totalTime)
         
-        guard let currentTime = player?.currentItem?.currentTime().seconds else { return }
-//        timeLabel.text = secondsToString(seconds: currentTime)
-//        timeSlider.value = Float(currentTime/totalTime)
-        
-//        self.timeSlider.value = Float(currentTime / totalTime)
-//        print(Float(currentTime / totalTime))
+        let list = data.lyrics.components(separatedBy: "\n")
+        for element in list {
+            let time = element.components(separatedBy: "]")[0]
+            let lyric = element.components(separatedBy: "]")[1]
+            
+            let times = time.components(separatedBy: "[")[1]
+            let minute = Int(times.components(separatedBy: ":")[0])
+            let second = Int(times.components(separatedBy: ":")[1])
+//            print(times)
+//            print(lyric)
+            let totalTime = minute! * 60 + second!
+            
+            self.lyricsList[totalTime] = lyric
+            print(lyricsList[totalTime])
+            
+            self.lyricsLabel.text = self.lyricsList[totalTime]
+//        }
+        }
     }
     
-    private func secondsToString(seconds: Double) -> String {
+    func secondsToString(seconds: Double) -> String {
         guard seconds.isNaN == false else { return "00:00" }
         let totalSeconds = Int(seconds)
         let min = totalSeconds / 60
         let seconds = totalSeconds % 60
         return String(format: "%02d:%02d", min, seconds)
     }
+}
+
+extension ViewController: UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print(lyricsList.count)
+        return 100
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "LyricCell", for: indexPath) as? LyricCell else {
+            return UITableViewCell()
+        }
+        cell.LyricCellLabel.text = lyricsList[indexPath.row]
+        return cell
+    }
+}
+
+class LyricCell: UITableViewCell {
+    @IBOutlet weak var LyricCellLabel: UILabel!
 }
 
 struct Music: Codable {
@@ -115,4 +164,5 @@ struct Music: Codable {
     let duration: Int
     let image: String
     let file: String
+    let lyrics: String
 }
