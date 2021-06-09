@@ -123,7 +123,7 @@
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LyricCell" rowHeight="30" id="XFK-b9-9e4" customClass="LyricCell" customModule="FLO" customModuleProvider="target">
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LyricCell" rowHeight="30" id="XFK-b9-9e4" customClass="LyricCell" customModule="FLO" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="30"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XFK-b9-9e4" id="7zP-Vb-N08">
@@ -223,6 +223,7 @@
                         <outlet property="playButton" destination="6L5-x8-RiK" id="IoT-Lp-JeT"/>
                         <outlet property="singer" destination="N9E-HT-g7T" id="U6y-dn-m1U"/>
                         <outlet property="songTitle" destination="1vf-Rz-hKj" id="CDa-GS-MKq"/>
+                        <outlet property="tableView" destination="rNX-wX-qHv" id="5f5-gB-sDm"/>
                         <outlet property="timeLabel" destination="Lsb-88-MJL" id="9Zo-NI-WYA"/>
                         <outlet property="timeSlider" destination="RCE-0Y-YDJ" id="jR0-1D-pEW"/>
                         <outlet property="totalLabel" destination="hMW-cT-PCb" id="vxt-ac-5iy"/>

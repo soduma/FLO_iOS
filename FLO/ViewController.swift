@@ -10,6 +10,7 @@ import AVFoundation
 import Kingfisher
 
 class ViewController: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var songTitle: UILabel!
@@ -32,15 +33,18 @@ class ViewController: UIViewController {
     var data: Music!
     var eachTime: Int = 0
     
-    var firstLyrics: String!
-        
+    private var lyricForTable = Array<String>()
+    private var timeForTable = Array<Int>()
+            
     override func viewDidLoad() {
         super.viewDidLoad()
         
         lyricsView.isHidden = true
         lyricsLabel.text = "..."
         coverImageView.layer.cornerRadius = 40
+        
         readyForPlay()
+        readyForLyrics()
         
         timeSlider.value = 0
         
@@ -71,7 +75,10 @@ class ViewController: UIViewController {
     
     @IBAction func touchLyrics(_ sender: UITapGestureRecognizer) {
         lyricsView.isHidden = false
-        print(lyricsList)
+
+        
+//        tableView.reloadData()
+//        print(lyricsList)
     }
     
     @IBAction func touchLyricsClose(_ sender: UIButton) {
@@ -123,6 +130,19 @@ class ViewController: UIViewController {
         }
     }
     
+    func readyForLyrics() {
+        for i in lyricsList.keys {
+            timeForTable.append(i)
+            timeForTable.sort()
+        }
+//        print("11111\(timeForTable)")
+        
+        for key in timeForTable {
+            lyricForTable.append(lyricsList[key]!)
+        }
+//        print("22222\(lyricForTable)")
+    }
+    
     func updateTime(time: CMTime) {
         guard let currentItem = player.currentItem?.currentTime().seconds else { return }
         timeLabel.text = secondsToString(seconds: currentItem)
@@ -149,21 +169,21 @@ extension ViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        print(indexPath.row)
     }
 }
 
 extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(lyricsList.count)
-        return 100
+        return lyricsList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "LyricCell", for: indexPath) as? LyricCell else {
             return UITableViewCell()
         }
-        cell.LyricCellLabel.text = lyricsList[indexPath.row]
+        print(lyricForTable[indexPath.row])
+        cell.LyricCellLabel.text = lyricForTable[indexPath.row]
         return cell
     }
 }
