@@ -38,7 +38,7 @@
 - 현재 재생 중인 부분의 가사가 하이라이팅 됩니다.
 곡 정보 데이터
 - 다음 url에서 제공하는 하나의 곡만 재생하면 됩니다.
-  - https://grepp-programmers-challenges.s3.ap-northeast-2.amazonaws.com/2020-flo/song.json
+  - [url](https://grepp-programmers-challenges.s3.ap-northeast-2.amazonaws.com/2020-flo/song.json)
 - 제공하는 json 파일의 내용이 변경되면 앱에서는 이를 반영하여 새로운 곡을 표시해 주어야 합니다.
 - json파일에는 다음과 같은 필드가 있습니다.
   - singer: 아티스트명
