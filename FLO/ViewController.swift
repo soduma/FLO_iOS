@@ -7,7 +7,7 @@
 
 import UIKit
 import AVFoundation
-import Kingfisher
+import Kingfisher //https://github.com/onevcat/Kingfisher
 
 class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
@@ -29,13 +29,13 @@ class ViewController: UIViewController {
     
     var player = AVPlayer()
     var playerItem: AVPlayerItem?
+    var data: Music!
     
     var lyricsList: [Int : String] = [:]
-    var data: Music!
     var eachTime: Int = 0
     
-    private var lyricForTable = Array<String>()
-    private var timeForTable = Array<Int>()
+    private var lyricForTable = [String]()
+    private var timeForTable = [Int]()
             
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +95,6 @@ class ViewController: UIViewController {
             } else {
                 lyricsBookmarkButton.tintColor = .purple
             }
-            
         } else {
             lyricsBookmarkButton.tintColor = .systemGray
         }
@@ -153,8 +152,8 @@ class ViewController: UIViewController {
         }
 //        print("11111\(timeForTable)")
         
-        for key in timeForTable {
-            lyricForTable.append(lyricsList[key]!)
+        for j in timeForTable {
+            lyricForTable.append(lyricsList[j]!)
         }
 //        print("22222\(lyricForTable)")
     }
@@ -173,17 +172,12 @@ class ViewController: UIViewController {
     
     func updateCell(time: CMTime, setTime: Int, indexPath: IndexPath) {
         guard let currentItem = player.currentItem?.currentTime().seconds else { return }
-//        let setTime = Int(TimeInterval(timeForTable)
-//        print("111")
         
         if Int(currentItem) == setTime {
             tableView.cellForRow(at: indexPath)?.backgroundColor = .cyan
         } else {
             tableView.cellForRow(at: indexPath)?.backgroundColor = .clear
         }
-//        if indexPath < indexPath.row {
-            
-//        }
     }
     
     func secondsToString(seconds: Double) -> String {
@@ -208,7 +202,6 @@ extension ViewController: UITableViewDelegate {
         } else {
             lyricsView.isHidden = true
         }
-        
         tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
     }
 }
@@ -223,31 +216,10 @@ extension ViewController: UITableViewDataSource {
             return UITableViewCell()
         }
 //        print(lyricForTable[indexPath.row])
-        cell.LyricCellLabel.text = lyricForTable[indexPath.row] //////
-        
-//        print(timeForTable[indexPath.row])
-//        let currentTime = Int(player.currentItem!.currentTime().seconds)
-//        print(currentTime)
+        cell.LyricCellLabel.text = lyricForTable[indexPath.row]
         let setTime = Int(TimeInterval(timeForTable[indexPath.row]))
-//        print(setTime)
-//        print(timeForTable[indexPath.row])
-        
-//        if currentTime == Int(timeForTable[indexPath.row]) {
-//            print("bbbbfbfbfbfbb")
-//            cell.LyricCellLabel.textColor = .red
-//        }
-//        if timeForTable[indexPath.row] == Int(currentItem) {
-//            print("yes")
-//            lyricsLabel.text = lyricsList[Int(currentItem)]
-//        } else {
-//            lyricsLabel.text = lyricsLabel.text
-//        }
-        
-//        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.5, preferredTimescale: 10), queue: .main, using: { time in
-//            self.updateTime(time: time)
-//        })
-        
-        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: .main) { time in
+
+        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 10), queue: .main) { time in
             self.updateCell(time: time, setTime: setTime, indexPath: indexPath)
         }
         return cell
