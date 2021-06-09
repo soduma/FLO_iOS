@@ -25,6 +25,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lyricsView: UIView!
     @IBOutlet weak var lyricsLabel: UILabel!
     @IBOutlet weak var lyricsCloseButton: UIButton!
+    @IBOutlet weak var lyricsBookmarkButton: UIButton!
     
     var player = AVPlayer()
     var playerItem: AVPlayerItem?
@@ -39,16 +40,17 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        coverImageView.layer.cornerRadius = 40
+        timeSlider.value = 0
         lyricsView.isHidden = true
         lyricsLabel.text = "..."
-        coverImageView.layer.cornerRadius = 40
+        lyricsBookmarkButton.isSelected = true
+        buttonColor()
         
         readyForPlay()
         readyForLyrics()
         
-        timeSlider.value = 0
-        
-        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.5, preferredTimescale: 10), queue: .main, using: { time in
+        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 10), queue: .main, using: { time in
             self.updateTime(time: time)
         })
     }
@@ -75,16 +77,30 @@ class ViewController: UIViewController {
     
     @IBAction func touchLyrics(_ sender: UITapGestureRecognizer) {
         lyricsView.isHidden = false
-
-        
-//        tableView.reloadData()
-//        print(lyricsList)
     }
     
     @IBAction func touchLyricsClose(_ sender: UIButton) {
         lyricsView.isHidden = true
     }
-
+    
+    @IBAction func touchLyricsBookmarkButton(_ sender: UIButton) {
+        lyricsBookmarkButton.isSelected = !lyricsBookmarkButton.isSelected
+        buttonColor()
+    }
+    
+    private func buttonColor() {
+        if lyricsBookmarkButton.isSelected {
+            if #available(iOS 13.0, *) {
+                lyricsBookmarkButton.tintColor = .systemIndigo
+            } else {
+                lyricsBookmarkButton.tintColor = .purple
+            }
+            
+        } else {
+            lyricsBookmarkButton.tintColor = .systemGray
+        }
+    }
+    
     func readyForPlay() {
         guard let url = URL(string: "https://grepp-programmers-challenges.s3.ap-northeast-2.amazonaws.com/2020-flo/song.json") else {
             print("missing url")
@@ -145,6 +161,7 @@ class ViewController: UIViewController {
     
     func updateTime(time: CMTime) {
         guard let currentItem = player.currentItem?.currentTime().seconds else { return }
+//        print(currentItem)
         timeLabel.text = secondsToString(seconds: currentItem)
         
         if lyricsList[Int(currentItem)] != nil {
@@ -152,6 +169,21 @@ class ViewController: UIViewController {
         } else {
             lyricsLabel.text = lyricsLabel.text
         }
+    }
+    
+    func updateCell(time: CMTime, setTime: Int, indexPath: IndexPath) {
+        guard let currentItem = player.currentItem?.currentTime().seconds else { return }
+//        let setTime = Int(TimeInterval(timeForTable)
+//        print("111")
+        
+        if Int(currentItem) == setTime {
+            tableView.cellForRow(at: indexPath)?.backgroundColor = .cyan
+        } else {
+            tableView.cellForRow(at: indexPath)?.backgroundColor = .clear
+        }
+//        if indexPath < indexPath.row {
+            
+//        }
     }
     
     func secondsToString(seconds: Double) -> String {
@@ -169,7 +201,15 @@ extension ViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        if lyricsBookmarkButton.isSelected {
+            let currentTime = TimeInterval(timeForTable[indexPath.row])
+            let time = CMTime(seconds: currentTime, preferredTimescale: 10)
+            player.seek(to: time)
+        } else {
+            lyricsView.isHidden = true
+        }
+        
+        tableView.scrollToRow(at: indexPath, at: .middle, animated: true)
     }
 }
 
@@ -182,8 +222,34 @@ extension ViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "LyricCell", for: indexPath) as? LyricCell else {
             return UITableViewCell()
         }
-        print(lyricForTable[indexPath.row])
-        cell.LyricCellLabel.text = lyricForTable[indexPath.row]
+//        print(lyricForTable[indexPath.row])
+        cell.LyricCellLabel.text = lyricForTable[indexPath.row] //////
+        
+//        print(timeForTable[indexPath.row])
+//        let currentTime = Int(player.currentItem!.currentTime().seconds)
+//        print(currentTime)
+        let setTime = Int(TimeInterval(timeForTable[indexPath.row]))
+//        print(setTime)
+//        print(timeForTable[indexPath.row])
+        
+//        if currentTime == Int(timeForTable[indexPath.row]) {
+//            print("bbbbfbfbfbfbb")
+//            cell.LyricCellLabel.textColor = .red
+//        }
+//        if timeForTable[indexPath.row] == Int(currentItem) {
+//            print("yes")
+//            lyricsLabel.text = lyricsList[Int(currentItem)]
+//        } else {
+//            lyricsLabel.text = lyricsLabel.text
+//        }
+        
+//        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.5, preferredTimescale: 10), queue: .main, using: { time in
+//            self.updateTime(time: time)
+//        })
+        
+        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1), queue: .main) { time in
+            self.updateCell(time: time, setTime: setTime, indexPath: indexPath)
+        }
         return cell
     }
 }

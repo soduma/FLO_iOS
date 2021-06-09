@@ -95,8 +95,8 @@
                                     <action selector="seek:" destination="BYZ-38-t0r" eventType="valueChanged" id="8m3-Bn-yO5"/>
                                 </connections>
                             </slider>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kjk-zu-Mnq">
-                                <rect key="frame" x="290" y="44" width="390" height="596"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kjk-zu-Mnq">
+                                <rect key="frame" x="0.0" y="44" width="390" height="596"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8f-hz-n5W">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="596"/>
@@ -104,26 +104,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="596"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26m-J0-fc7">
-                                                    <rect key="frame" x="330" y="20" width="40" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="8l6-rK-RrN"/>
-                                                        <constraint firstAttribute="width" constant="40" id="bLr-Ks-rX3"/>
-                                                    </constraints>
-                                                    <color key="tintColor" systemColor="labelColor"/>
-                                                    <state key="normal" image="xmark" catalog="system">
-                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="25"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="touchLyricsClose:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p99-ti-rgF"/>
-                                                    </connections>
-                                                </button>
-                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rNX-wX-qHv">
+                                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="30" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="rNX-wX-qHv">
                                                     <rect key="frame" x="0.0" y="60" width="390" height="536"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <prototypes>
-                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LyricCell" rowHeight="30" id="XFK-b9-9e4" customClass="LyricCell" customModule="FLO" customModuleProvider="target">
+                                                        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LyricCell" id="XFK-b9-9e4" customClass="LyricCell" customModule="FLO" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="30"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XFK-b9-9e4" id="7zP-Vb-N08">
@@ -131,7 +117,7 @@
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbD-Mf-dJz">
-                                                                        <rect key="frame" x="174" y="4.6666666666666679" width="42" height="21"/>
+                                                                        <rect key="frame" x="174" y="4.6666666666666661" width="42" height="20.666666666666671"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                         <nil key="textColor"/>
                                                                         <nil key="highlightedColor"/>
@@ -154,8 +140,38 @@
                                                         <outlet property="delegate" destination="BYZ-38-t0r" id="esj-TB-qGt"/>
                                                     </connections>
                                                 </tableView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="26m-J0-fc7">
+                                                    <rect key="frame" x="330" y="20" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="8l6-rK-RrN"/>
+                                                        <constraint firstAttribute="width" constant="40" id="bLr-Ks-rX3"/>
+                                                    </constraints>
+                                                    <color key="tintColor" systemColor="systemGrayColor"/>
+                                                    <state key="normal" image="xmark" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="23"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="touchLyricsClose:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p99-ti-rgF"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SQj-xb-lnx">
+                                                    <rect key="frame" x="330" y="80" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="KNI-6b-ORH"/>
+                                                        <constraint firstAttribute="height" constant="40" id="gxw-wZ-vEm"/>
+                                                    </constraints>
+                                                    <color key="tintColor" systemColor="systemGrayColor"/>
+                                                    <state key="normal" image="bookmark.slash" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="23"/>
+                                                    </state>
+                                                    <state key="selected" image="bookmark.fill" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="touchLyricsBookmarkButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Jpp-Y9-SzN"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="SQj-xb-lnx" firstAttribute="top" secondItem="26m-J0-fc7" secondAttribute="bottom" constant="20" id="Lxq-ja-fuU"/>
                                                 <constraint firstItem="rNX-wX-qHv" firstAttribute="top" secondItem="26m-J0-fc7" secondAttribute="bottom" id="z4k-AN-W31"/>
                                             </constraints>
                                         </view>
@@ -184,6 +200,7 @@
                             <constraint firstItem="vT2-RZ-TZv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5Rq-a2-1Cf"/>
                             <constraint firstItem="fLx-7V-9qX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="5vO-bk-DRK"/>
                             <constraint firstItem="RCE-0Y-YDJ" firstAttribute="top" secondItem="vT2-RZ-TZv" secondAttribute="bottom" constant="50" id="ADo-tL-N7q"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SQj-xb-lnx" secondAttribute="trailing" constant="20" id="BYn-ab-hJr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="6L5-x8-RiK" secondAttribute="bottom" constant="30" id="Dp4-Yo-XHT"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hMW-cT-PCb" secondAttribute="trailing" constant="20" id="Er6-7m-YWS"/>
                             <constraint firstItem="hMW-cT-PCb" firstAttribute="top" secondItem="RCE-0Y-YDJ" secondAttribute="bottom" id="MiR-3y-KP0"/>
@@ -217,6 +234,7 @@
                     <connections>
                         <outlet property="album" destination="dBe-UB-WcU" id="IKn-qh-00M"/>
                         <outlet property="coverImageView" destination="fLx-7V-9qX" id="R0h-KW-xUC"/>
+                        <outlet property="lyricsBookmarkButton" destination="SQj-xb-lnx" id="b6X-Bi-16h"/>
                         <outlet property="lyricsCloseButton" destination="26m-J0-fc7" id="QjN-mQ-u6J"/>
                         <outlet property="lyricsLabel" destination="cee-dk-5Rz" id="42D-L3-Peg"/>
                         <outlet property="lyricsView" destination="Kjk-zu-Mnq" id="jjy-Qa-GRy"/>
@@ -241,6 +259,8 @@
     </scenes>
     <resources>
         <image name="FLO_Splash-Img3x(1242x2688)" width="1242" height="2688"/>
+        <image name="bookmark.fill" catalog="system" width="112" height="128"/>
+        <image name="bookmark.slash" catalog="system" width="115" height="128"/>
         <image name="pause.fill" catalog="system" width="116" height="128"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>

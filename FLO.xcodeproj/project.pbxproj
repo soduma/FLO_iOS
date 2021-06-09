@@ -19,6 +19,7 @@
 /* Begin PBXFileReference section */
 		2425B1080A4549084E63CC20 /* Pods-FLO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FLO.debug.xcconfig"; path = "Target Support Files/Pods-FLO/Pods-FLO.debug.xcconfig"; sourceTree = "<group>"; };
 		6A56D2619B5593EA734AA3C5 /* Pods_FLO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FLO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A0A96C2026715D4500EAD617 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		A0C5F3132668B0ED008ADB31 /* FLO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FLO.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A0C5F3162668B0ED008ADB31 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A0C5F3182668B0ED008ADB31 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 				A0C5F3162668B0ED008ADB31 /* AppDelegate.swift */,
 				A0C5F3182668B0ED008ADB31 /* SceneDelegate.swift */,
 				A0C5F31A2668B0ED008ADB31 /* ViewController.swift */,
+				A0A96C2026715D4500EAD617 /* README.md */,
 				A0C5F31C2668B0ED008ADB31 /* Main.storyboard */,
 				A0C5F31F2668B0EE008ADB31 /* Assets.xcassets */,
 				A0C5F3212668B0EE008ADB31 /* LaunchScreen.storyboard */,
