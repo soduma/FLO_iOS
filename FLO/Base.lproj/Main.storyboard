@@ -71,7 +71,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vT2-RZ-TZv">
                                 <rect key="frame" x="0.0" y="575" width="390" height="45"/>
                                 <subviews>
-                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cee-dk-5Rz">
+                                    <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cee-dk-5Rz">
                                         <rect key="frame" x="174.33333333333334" y="12.333333333333369" width="41.333333333333343" height="20.333333333333329"/>
                                         <gestureRecognizers/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -95,8 +95,8 @@
                                     <action selector="seek:" destination="BYZ-38-t0r" eventType="valueChanged" id="8m3-Bn-yO5"/>
                                 </connections>
                             </slider>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kjk-zu-Mnq">
-                                <rect key="frame" x="0.0" y="44" width="390" height="596"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kjk-zu-Mnq">
+                                <rect key="frame" x="290" y="44" width="390" height="596"/>
                                 <subviews>
                                     <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P8f-hz-n5W">
                                         <rect key="frame" x="0.0" y="0.0" width="390" height="596"/>
@@ -142,6 +142,7 @@
                                                                     <constraint firstItem="DbD-Mf-dJz" firstAttribute="centerX" secondItem="7zP-Vb-N08" secondAttribute="centerX" id="fjE-JP-WF6"/>
                                                                 </constraints>
                                                             </tableViewCellContentView>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <connections>
                                                                 <outlet property="LyricCellLabel" destination="DbD-Mf-dJz" id="uhm-rN-clY"/>

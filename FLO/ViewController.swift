@@ -25,21 +25,28 @@ class ViewController: UIViewController {
     @IBOutlet weak var lyricsLabel: UILabel!
     @IBOutlet weak var lyricsCloseButton: UIButton!
     
-    var player: AVPlayer?
+    var player = AVPlayer()
     var playerItem: AVPlayerItem?
     
     var lyricsList: [Int : String] = [:]
-
+    var data: Music!
+    var eachTime: Int = 0
+    
+    var firstLyrics: String!
         
     override func viewDidLoad() {
         super.viewDidLoad()
         
         lyricsView.isHidden = true
+        lyricsLabel.text = "..."
         coverImageView.layer.cornerRadius = 40
         readyForPlay()
         
         timeSlider.value = 0
         
+        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 0.5, preferredTimescale: 10), queue: .main, using: { time in
+            self.updateTime(time: time)
+        })
     }
     
     @IBAction func touchPlayButton(_ sender: UIButton) {
@@ -47,24 +54,24 @@ class ViewController: UIViewController {
         
         if playButton.isSelected == true {
             print("play")
-            player?.play()
+            player.play()
         } else {
             print("pause")
-            player?.pause()
+            player.pause()
         }
     }
     
     @IBAction func seek(_ sender: UISlider) {
-        guard let currentItem = player?.currentItem else { return }
+        guard let currentItem = player.currentItem else { return }
         let position = Double(sender.value)
         let seconds = position * currentItem.duration.seconds
         let time = CMTime(seconds: seconds, preferredTimescale: 100)
-        player?.seek(to: time)
+        player.seek(to: time)
     }
     
     @IBAction func touchLyrics(_ sender: UITapGestureRecognizer) {
         lyricsView.isHidden = false
-//        print(lyricsList)
+        print(lyricsList)
     }
     
     @IBAction func touchLyricsClose(_ sender: UIButton) {
@@ -80,7 +87,7 @@ class ViewController: UIViewController {
         guard let jsonData = try? String(contentsOf: url).data(using: .utf8) else { return }
 //        print(jsonData)
         
-        guard let data = try? JSONDecoder().decode(Music.self, from: jsonData) else { return }
+        data = try? JSONDecoder().decode(Music.self, from: jsonData)
 //        print(data)
 //        print(data.singer)
 //        print(data.image)
@@ -109,13 +116,21 @@ class ViewController: UIViewController {
             let second = Int(times.components(separatedBy: ":")[1])
 //            print(times)
 //            print(lyric)
-            let totalTime = minute! * 60 + second!
-            
-            self.lyricsList[totalTime] = lyric
-            print(lyricsList[totalTime])
-            
-            self.lyricsLabel.text = self.lyricsList[totalTime]
-//        }
+            eachTime = minute! * 60 + second!
+//            print("eachTime\(eachTime)")
+            self.lyricsList[eachTime] = lyric
+//            print(lyricsList[eachTime])
+        }
+    }
+    
+    func updateTime(time: CMTime) {
+        guard let currentItem = player.currentItem?.currentTime().seconds else { return }
+        timeLabel.text = secondsToString(seconds: currentItem)
+        
+        if lyricsList[Int(currentItem)] != nil {
+            lyricsLabel.text = lyricsList[Int(currentItem)]
+        } else {
+            lyricsLabel.text = lyricsLabel.text
         }
     }
     
