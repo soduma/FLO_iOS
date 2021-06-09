@@ -43,7 +43,7 @@ class ViewController: UIViewController {
         coverImageView.layer.cornerRadius = 40
         timeSlider.value = 0
         lyricsView.isHidden = true
-        lyricsLabel.text = "..."
+        lyricsLabel.text = "연주"
         lyricsBookmarkButton.isSelected = true
         buttonColor()
         
