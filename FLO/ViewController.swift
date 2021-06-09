@@ -162,6 +162,7 @@ class ViewController: UIViewController {
         guard let currentItem = player.currentItem?.currentTime().seconds else { return }
 //        print(currentItem)
         timeLabel.text = secondsToString(seconds: currentItem)
+        timeSlider.value = Float(currentItem) / Float(data.duration)
         
         if lyricsList[Int(currentItem)] != nil {
             lyricsLabel.text = lyricsList[Int(currentItem)]
