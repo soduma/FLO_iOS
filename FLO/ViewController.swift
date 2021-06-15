@@ -40,19 +40,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        coverImageView.layer.cornerRadius = 40
-        timeSlider.value = 0
-        lyricsView.isHidden = true
-        lyricsLabel.text = "연주"
-        lyricsBookmarkButton.isSelected = true
-        buttonColor()
-        
-        readyForPlay()
+        initializeApp()
         readyForLyrics()
-        
-        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 10), queue: .main, using: { time in
-            self.updateTime(time: time)
-        })
     }
     
     @IBAction func touchPlayButton(_ sender: UIButton) {
@@ -98,6 +87,21 @@ class ViewController: UIViewController {
         } else {
             lyricsBookmarkButton.tintColor = .systemGray
         }
+    }
+    
+    func initializeApp() {
+        coverImageView.layer.cornerRadius = 40
+        timeSlider.value = 0
+        lyricsView.isHidden = true
+        lyricsLabel.text = "..."
+        lyricsBookmarkButton.isSelected = true
+        buttonColor()
+        
+        readyForPlay()
+        
+        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 10), queue: .main, using: { time in
+            self.updateTime(time: time)
+        })
     }
     
     func readyForPlay() {
@@ -168,6 +172,11 @@ class ViewController: UIViewController {
             lyricsLabel.text = lyricsList[Int(currentItem)]
         } else {
             lyricsLabel.text = lyricsLabel.text
+        }
+        
+        if timeSlider.value == 1 {
+            playButton.isSelected = false
+            initializeApp()
         }
     }
     
