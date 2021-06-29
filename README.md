@@ -55,4 +55,5 @@ CC BY 라이선스로 한국저작권위원회에서 제공한 곡을 활용했�
 ***
 
 결과물
+
 ![Simulator Screen Recording - iPhone 12 Pro - 2021-06-29 at 16 31 47](https://user-images.githubusercontent.com/69476598/123757845-533e9a00-d8f9-11eb-86d1-e9dde02e796e.gif)
