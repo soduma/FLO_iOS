@@ -89,8 +89,9 @@
                                 </constraints>
                             </view>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="RCE-0Y-YDJ">
-                                <rect key="frame" x="18" y="670" width="354" height="31"/>
+                                <rect key="frame" x="-16" y="670" width="422" height="31"/>
                                 <color key="minimumTrackTintColor" systemColor="labelColor"/>
+                                <color key="thumbTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <action selector="seek:" destination="BYZ-38-t0r" eventType="valueChanged" id="8m3-Bn-yO5"/>
                                 </connections>
@@ -207,7 +208,7 @@
                             <constraint firstItem="Kjk-zu-Mnq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="MpG-A0-Ree"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fLx-7V-9qX" secondAttribute="trailing" id="P7i-Ea-g7d"/>
                             <constraint firstItem="1vf-Rz-hKj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Q4p-F4-YnG"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RCE-0Y-YDJ" secondAttribute="trailing" constant="20" id="Qaw-kj-C8D"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="RCE-0Y-YDJ" secondAttribute="trailing" constant="-14" id="Qaw-kj-C8D"/>
                             <constraint firstItem="dBe-UB-WcU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="T8o-fQ-dtY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vT2-RZ-TZv" secondAttribute="trailing" id="UkS-M7-fK8"/>
                             <constraint firstItem="dBe-UB-WcU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="VGK-FA-jjE"/>
@@ -228,7 +229,7 @@
                             <constraint firstItem="Kjk-zu-Mnq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ufN-YO-dLq"/>
                             <constraint firstItem="N9E-HT-g7T" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wJq-X5-Xo9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kjk-zu-Mnq" secondAttribute="trailing" id="xby-ot-EWQ"/>
-                            <constraint firstItem="RCE-0Y-YDJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="yxj-0u-XC7"/>
+                            <constraint firstItem="RCE-0Y-YDJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="-14" id="yxj-0u-XC7"/>
                         </constraints>
                     </view>
                     <connections>
