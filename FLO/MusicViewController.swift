@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MusicViewController.swift
 //  FLO
 //
 //  Created by 장기화 on 2021/06/03.
@@ -9,7 +9,7 @@ import UIKit
 import AVFoundation
 import Kingfisher //https://github.com/onevcat/Kingfisher
 
-class ViewController: UIViewController {
+class MusicViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var coverImageView: UIImageView!
@@ -34,8 +34,8 @@ class ViewController: UIViewController {
     var lyricsList: [Int : String] = [:]
     var eachTime: Int = 0
     
-    private var lyricForTable = [String]()
-    private var timeForTable = [Int]()
+    var lyricForTable: [String] = []
+    var timeForTable: [Int] = []
             
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,7 +93,6 @@ class ViewController: UIViewController {
         coverImageView.layer.cornerRadius = 40
         timeSlider.value = 0
         lyricsView.isHidden = true
-        lyricsLabel.text = "..."
         lyricsBookmarkButton.isSelected = true
         buttonColor()
         
@@ -160,6 +159,7 @@ class ViewController: UIViewController {
             lyricForTable.append(lyricsList[j]!)
         }
 //        print("22222\(lyricForTable)")
+        lyricsLabel.text = lyricForTable[0]
     }
     
     func updateTime(time: CMTime) {
@@ -199,11 +199,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
+extension MusicViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if lyricsBookmarkButton.isSelected {
             let currentTime = TimeInterval(timeForTable[indexPath.row])
@@ -216,7 +212,7 @@ extension ViewController: UITableViewDelegate {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension MusicViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lyricsList.count
     }
@@ -229,23 +225,9 @@ extension ViewController: UITableViewDataSource {
         cell.LyricCellLabel.text = lyricForTable[indexPath.row]
         let setTime = Int(TimeInterval(timeForTable[indexPath.row]))
 
-        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 10), queue: .main) { time in
-            self.updateCell(time: time, setTime: setTime, indexPath: indexPath)
+        player.addPeriodicTimeObserver(forInterval: CMTime(seconds: 1, preferredTimescale: 1000), queue: .main) { [weak self] time in
+            self?.updateCell(time: time, setTime: setTime, indexPath: indexPath)
         }
         return cell
     }
-}
-
-class LyricCell: UITableViewCell {
-    @IBOutlet weak var LyricCellLabel: UILabel!
-}
-
-struct Music: Codable {
-    let singer: String
-    let album: String
-    let title: String
-    let duration: Int
-    let image: String
-    let file: String
-    let lyrics: String
 }
